@@ -43,6 +43,13 @@ and open the template in the editor.
     -fx-font-size: 20;
 }
 
+.popuptext {
+    -fx-text-fill: darkgoldenrod;
+    -fx-font-family: "Agency FB";
+    -fx-font-weight: Bold;
+    -fx-font-size: 20;
+}
+
 .popup {
     -fx-background-color: #774f4f; /*#004f4f;*/
     -fx-padding: 1;

@@ -18,13 +18,12 @@ import javafx.stage.Window;
  *
  * @author Oliver
  */
-public class AlertPopup {
-      
+public class PopupText {
     /**
      * Constructor without args
      * Build an exit popup window
      */
-    AlertPopup(){
+    public PopupText(){
         //message label
         Label msg = new Label("Please confirm that you choose to exit: ");
         msg.setMaxWidth(300);
@@ -75,7 +74,7 @@ public class AlertPopup {
      * Constructor with args 
      * Build an alert popup only containing one message
      */
-    AlertPopup(String message, int W, int H, int x, int y){
+    public PopupText(String message, int W, int H, int x, int y){
         //common popup window constructor
         //args: message in label, W: width of message, H: height of message
         //args: (x,y) : message in position(x,y)

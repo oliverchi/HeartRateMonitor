@@ -78,10 +78,10 @@ public class HeartRateMonitor extends Application {
     }
     
     /**
-     * Method getRoot()
+     * Method getPane()
      * @return root pane
      */
-    public static BorderPane getRoot() {
+    public static BorderPane getPane() {
         return ROOTPANE;
     }
     

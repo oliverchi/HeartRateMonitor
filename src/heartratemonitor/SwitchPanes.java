@@ -29,7 +29,7 @@ public class SwitchPanes {
             GridPane loginPane = FXMLLoader.load( loginUrl );
             loginPane.getStyleClass().add("login");
       
-            BorderPane border = HeartRateMonitor.getRoot();
+            BorderPane border = HeartRateMonitor.getPane();
             border.setCenter(loginPane);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -102,7 +102,7 @@ public class SwitchPanes {
             URL url = getClass().getResource(fxmfile);
             GridPane newPane = FXMLLoader.load( url );
             newPane.getStyleClass().add(filename.toLowerCase());      
-            BorderPane border = HeartRateMonitor.getRoot();
+            BorderPane border = HeartRateMonitor.getPane();
             border.setCenter(newPane);
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -71,7 +71,10 @@ public class MenuBarController implements Initializable {
     @FXML
     void popUpExitPane(ActionEvent event) {  
         try {      
-            new AlertPopup();//change it late to dialog window
+            //new AlertPopup();//change it late to dialog window
+            new PopupWindow();
+            //new PopupWindow("Exit", "Please choose if exit system:");//alternative option
+            //new AlertMsg();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
