@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane id="GridPane" alignment="BASELINE_CENTER" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="heartratemonitor.AboutPaneController">
+    <stylesheets>
+        <URL value="@Homepage.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="240.0" layoutX="200.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <WebView fx:id="aboutText" layoutX="200.0" layoutY="220.0" prefHeight="320.0" prefWidth="400.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="1.0" top="1.0" />
+         </GridPane.margin></WebView>
+      <Button fx:id="returnButton" alignment="CENTER" layoutX="374.0" layoutY="560.0" mnemonicParsing="false" onAction="#returnToHomepage" text="Home" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+   </children>
+   <columnConstraints>
+      <ColumnConstraints prefWidth="600.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="100.0" prefHeight="200.0" />
+      <RowConstraints minHeight="100.0" prefHeight="350.0" />
+      <RowConstraints minHeight="40.0" prefHeight="50.0" />
+   </rowConstraints>
+</GridPane>

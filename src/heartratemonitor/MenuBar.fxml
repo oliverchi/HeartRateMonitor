@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<MenuBar id="menubar" minHeight="30.0" minWidth="240.0" prefHeight="30.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="heartratemonitor.MenuBarController">
+    <stylesheets>
+        <URL value="@Homepage.css" />
+    </stylesheets>
+    <menus>
+        <Menu mnemonicParsing="false" text="Login">
+            <items>
+            <MenuItem fx:id="register" mnemonicParsing="false" onAction="#switchToRegisterPane" text="Register" />
+            </items>
+            <items>
+            <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#switchToLoginPane" text="Logout" />
+            </items>
+            <items>
+            <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#popUpExitPane" text="Exit" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Functions">
+            <items>
+            <MenuItem fx:id="recomm" mnemonicParsing="false" onAction="#switchToRecommPane" text="Recomm" />
+            </items>
+            <items>
+            <MenuItem fx:id="record" mnemonicParsing="false" onAction="#switchToRecordPane" text="Record" />
+            </items>
+            <items>
+            <MenuItem fx:id="review" mnemonicParsing="false" onAction="#switchToReviewPane" text="Review" />
+            </items>            
+        </Menu>
+        <Menu mnemonicParsing="false" text="Clinic">
+            <items>
+            <MenuItem fx:id="email" mnemonicParsing="false" onAction="#switchToEmailPane" text="Email to Doctor" />
+            </items>
+            <items>
+            <MenuItem fx:id="forum" mnemonicParsing="false" onAction="#switchToForumPane" text="Health Forum" />
+            </items>          
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <items>
+            <MenuItem fx:id="manual" mnemonicParsing="false" onAction="#switchToManualPane" text="Manual" />
+            </items>
+            <items>
+            <MenuItem fx:id="qa" mnemonicParsing="false" onAction="#switchToQAPane" text="Q/A" />
+            </items> 
+            <items> 
+            <MenuItem fx:id="about" mnemonicParsing="false" onAction="#switchToAboutPane" text="About" />
+            </items>        
+        </Menu>
+    </menus>
+</MenuBar>

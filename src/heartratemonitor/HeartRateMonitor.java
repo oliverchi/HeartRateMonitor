@@ -5,13 +5,16 @@
  */
 package heartratemonitor;
 
+import java.io.IOException;
+import java.net.URL;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -19,33 +22,82 @@ import javafx.stage.Stage;
  */
 public class HeartRateMonitor extends Application {
     
+    //Create a static root to pass to the controller
+    //Set BorderPane as layout 
+    private final static BorderPane ROOTPANE = new BorderPane();
+    
+    //Object User class
+    private static User user = new User();
+    
+    //Create main scene
+    private static Scene scene;
+    
+    /**
+     * initial stage: start()
+     * @param primaryStage
+     * @throws IOException 
+     */    
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
+    public void start(Stage primaryStage) throws IOException {
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        // load FXML resources for First Page
+        URL menubarUrl = getClass().getResource("MenuBar.fxml");
+        MenuBar menubar = FXMLLoader.load( menubarUrl );
+        menubar.getStyleClass().add("menubar");
+
+        URL loginUrl = getClass().getResource("LoginPane.fxml");
+        GridPane loginPane = FXMLLoader.load( loginUrl );
+        loginPane.getStyleClass().add("login");
         
-        Scene scene = new Scene(root, 300, 250);
+        //layout controls in the borderpane
+        ROOTPANE.setTop(menubar);
+        ROOTPANE.setCenter(loginPane);
         
-        primaryStage.setTitle("Hello World!");
+        //construct our scene
+        scene = new Scene(ROOTPANE, 800, 600);
+        scene.getStylesheets().add(getClass()
+                .getResource("Homepage.css").toExternalForm());
+        
+        //show the stage
+        primaryStage.setTitle("Heart Rate Monitor");
         primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        //primaryStage.getIcons().add(new Image(""));
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.setMinHeight(460);
+        primaryStage.setMinWidth(400);
         primaryStage.show();
     }
 
     /**
+     * main()
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Method getRoot()
+     * @return root pane
+     */
+    public static BorderPane getRoot() {
+        return ROOTPANE;
+    }
+    
+    /**
+     * Method getUser()
+     * @return user object
+     */
+    public static User getUser() {
+        return user;
+    }
+    
+    /**
+     * Method getScene()
+     * @return main scene
+     */
+    public static Scene getScene() {
+        return scene;
+    }
 }

@@ -1,0 +1,137 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14-Apr-2017, 15:55:53
+    Author     : Oliver
+*/
+.menubar {
+    -fx-background-color: #c04f4f; /*#004f4f;*/
+    -fx-padding: 1;
+    -fx-spacing: 1;
+    -fx-font-family: "Agency FB";
+    -fx-font-weight: LIGHT;
+    -fx-font-size: 14;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.login {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    
+}
+
+.homepage {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.message {
+    -fx-text-fill: greenyellow;
+    -fx-font-family: "Agency FB";
+    -fx-font-weight: Bold;
+    -fx-font-size: 20;
+}
+
+.popup {
+    -fx-background-color: #774f4f; /*#004f4f;*/
+    -fx-padding: 1;
+    -fx-spacing: 1;    
+}
+
+.record {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.review {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.email {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.forum {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.qa {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.manual {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.about {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.register {
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Agency FB";
+    -fx-font-weight: Bold;
+    -fx-font-size: 14;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(white, #cbd0d7);
+}
