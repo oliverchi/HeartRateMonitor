@@ -12,7 +12,7 @@ and open the template in the editor.
     -fx-padding: 1;
     -fx-spacing: 1;
     -fx-font-family: "Agency FB";
-    -fx-font-weight: LIGHT;
+    -fx-weight: LIGHT;
     -fx-font-size: 14;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
@@ -39,14 +39,14 @@ and open the template in the editor.
 .message {
     -fx-text-fill: greenyellow;
     -fx-font-family: "Agency FB";
-    -fx-font-weight: Bold;
+    -fx-weight: Bold;
     -fx-font-size: 20;
 }
 
 .popuptext {
     -fx-text-fill: darkgoldenrod;
     -fx-font-family: "Agency FB";
-    -fx-font-weight: Bold;
+    -fx-weight: Bold;
     -fx-font-size: 20;
 }
 
@@ -133,7 +133,7 @@ and open the template in the editor.
 .button {
     -fx-text-fill: white;
     -fx-font-family: "Agency FB";
-    -fx-font-weight: Bold;
+    -fx-weight: Bold;
     -fx-font-size: 14;
     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );

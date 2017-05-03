@@ -15,13 +15,13 @@ and open the template in the editor.
     -fx-font-size: 20;
 }
 
-.Button {
-    background-color: #008CBA; /* Blue */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.button {
+    -fx-background-color: #e7e7e7; /*#4CAF50;  Green */
+    -fx-border: 0.5px;
+    -fx-text-fill: #555555;
+    -fx-padding: 8px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 14px;
 }
