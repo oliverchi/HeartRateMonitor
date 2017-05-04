@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.MenuBar?>
 
-<MenuBar id="menubar" minHeight="30.0" minWidth="240.0" prefHeight="30.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="heartratemonitor.MenuBarController">
+<MenuBar id="menubar" minHeight="30.0" minWidth="240.0" onMouseClicked="#checkIfDisableMenu2" prefHeight="30.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="heartratemonitor.MenuBarController">
     <stylesheets>
         <URL value="@Homepage.css" />
     </stylesheets>
     <menus>
-        <Menu mnemonicParsing="false" text="Login">
+        <Menu mnemonicParsing="false" onShowing="#checkIfDisableMenu" text="Login">
             <items>
             <MenuItem fx:id="register" mnemonicParsing="false" onAction="#switchToRegisterPane" text="Register" />
             </items>
@@ -24,7 +24,7 @@
             <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#popUpExitPane" text="Exit" />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Functions">
+        <Menu mnemonicParsing="false" onShowing="#checkIfDisableMenu" text="Functions">
             <items>
             <MenuItem fx:id="recomm" mnemonicParsing="false" onAction="#switchToRecommPane" text="Recomm" />
             </items>
@@ -35,7 +35,7 @@
             <MenuItem fx:id="review" mnemonicParsing="false" onAction="#switchToReviewPane" text="Review" />
             </items>            
         </Menu>
-        <Menu mnemonicParsing="false" text="Clinic">
+        <Menu mnemonicParsing="false" onShowing="#checkIfDisableMenu" text="Clinic">
             <items>
             <MenuItem fx:id="email" mnemonicParsing="false" onAction="#switchToEmailPane" text="Email to Doctor" />
             </items>
@@ -43,7 +43,7 @@
             <MenuItem fx:id="forum" mnemonicParsing="false" onAction="#switchToForumPane" text="Health Forum" />
             </items>          
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" onShowing="#checkIfDisableMenu" text="Help">
             <items>
             <MenuItem fx:id="manual" mnemonicParsing="false" onAction="#switchToManualPane" text="Manual" />
             </items>
@@ -53,6 +53,6 @@
             <items> 
             <MenuItem fx:id="about" mnemonicParsing="false" onAction="#switchToAboutPane" text="About" />
             </items>        
-        </Menu>
+        </Menu>        
     </menus>
 </MenuBar>

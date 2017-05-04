@@ -32,25 +32,25 @@
     <children>
         <Button fx:id="loginbutton" alignment="CENTER" minHeight="-Infinity" minWidth="75.0" onAction="#handleLoginButtonAction" prefHeight="28.0" prefWidth="80.0" text="Login" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
         </Button>
-        <Label fx:id="label" minHeight="33.0" minWidth="200.0" prefHeight="33.0" prefWidth="334.0" text="Welcome, User! Please log into your account :" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="1">
+        <Label minHeight="33.0" minWidth="200.0" prefHeight="33.0" prefWidth="334.0" text="Welcome, User! Please log into your account :" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="1">
             <font>
                 <Font name="Agency FB" size="20.0" />
             </font>
         </Label>
       <TextField fx:id="username" maxHeight="28.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="180.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <PasswordField fx:id="password" maxHeight="28.0" maxWidth="240.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="180.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-      <Label fx:id="label1" alignment="CENTER" minHeight="16" minWidth="69" prefHeight="36.0" prefWidth="103.0" text="Username" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <Label alignment="CENTER" minHeight="16" minWidth="69" prefHeight="36.0" prefWidth="103.0" text="Username" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <font>
                 <Font name="Agency FB" size="18.0" />
             </font>
       </Label>
-      <Label fx:id="label11" alignment="CENTER" minHeight="16" minWidth="69" prefHeight="36.0" prefWidth="103.0" text="Password" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Label alignment="CENTER" minHeight="16" minWidth="69" prefHeight="36.0" prefWidth="103.0" text="Password" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP">
             <font>
                 <Font name="Agency FB" size="18.0" />
             </font>
       </Label>
-      <Label fx:id="invalidMsg" textFill="#ee0b0b" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
-        <Button fx:id="newuser" alignment="CENTER" minHeight="-Infinity" minWidth="75.0" onAction="#handleNewUserButtonAction" prefHeight="28.0" prefWidth="80.0" text="New User" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+      <Label fx:id="invalidMsg" textFill="#ee0b0b" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+        <Button alignment="CENTER" minHeight="-Infinity" minWidth="75.0" onAction="#handleNewUserButtonAction" prefHeight="28.0" prefWidth="80.0" text="New User" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
         </Button>
     </children>
 </GridPane>

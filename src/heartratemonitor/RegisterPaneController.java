@@ -87,6 +87,8 @@ public class RegisterPaneController implements Initializable {
     private Label errorMsg;       
     @FXML
     private Label dateGenderText;
+    @FXML
+    private TextField irn;
     
     /**
      * Initializes the controller class.
@@ -173,45 +175,89 @@ public class RegisterPaneController implements Initializable {
                 birthday.getValue().getYear() <= (LocalDate.now().getYear() - 10)){
             dateGenderText.setText("");
         } else {
-            dateGenderText.setText("wrong birthday, try again?");        
+            dateGenderText.setText("false date of birthday, try again?");        
         }
     }
-
+    
+    //check if mobile number is 10 digitals
     @FXML
     private void checkPhoneValid(KeyEvent event) {
         if (phoneField.getText().matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d")) {
             phoneText.setText("");
         } else {
-            phoneText.setText("wrong mobile number, try again?");
+            phoneText.setText("incorrent mobile number, try again?");
         }
     }
-
+    
+    //check if address string contains number
     @FXML
     private void checkAddressValid(KeyEvent event) {
-        
+        if (addressField.getText().matches(".*\\d+.*")) {
+            addressText.setText("");
+        } else {
+            addressText.setText("incorrect address, try again?");
+        }
     }
-
+    
+    //check if city string doesn't contain number
     @FXML
     private void checkCityValid(KeyEvent event) {
-        
+        if (!cityField.getText().matches(".*\\d+.*")) {
+            cityText.setText("");
+        } else {
+            cityText.setText("incorrect city name, try again?");
+        }
     }
-
+    
+    //check if input is a valid medicare card number and 
+    //remind user to enter individual refernece number
     @FXML
     private void checkMedicareCardValid(KeyEvent event) {
-        
+        if ( !medicareField.getText().matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d") ) {
+            medicareText.setText("medicare card number should be 10 digitals, try again?");
+        } else if ( irn.getText().isEmpty() ){
+            medicareText.setText("don't forget input your individual reference number");
+        } else {
+            medicareText.setText("IRN is the number next to your name on the medicare card");
+        }
     }
-
+    
+    //check if user enter one digital for IRN
+    @FXML
+    private void checkIRNValid(KeyEvent event) {
+        if (irn.getText().matches("\\d") ) medicareText.setText("");
+    }    
+    
+    //check if postcode string is 4 digitals
     @FXML
     private void checkPostcodeValid(KeyEvent event) {
-        
+        if (postcodeField.getText().matches("\\d\\d\\d\\d")) {
+            postcodeText.setText("");
+        } else {
+            postcodeText.setText("Australian postcode should be 4 digitals, try again?");
+        }
     }
-
+    
+    //check if all information have been entered
+    //decide if submit the form to database
+    //add user information to tables in database
     @FXML
     private void buttonOnAction(ActionEvent event) {
         
+        //check if all fields have been filled
+        
+        
+        //check if user clicks the checkbox
+        
+        
+        //submit the form to database
+        
     }     
+
+    
        
-    /* INNER CLASS
+    /* 
+     * INNER CLASS
      * Class EmailValidator
      * referenced from Mike Yong's codes for email address
      * orignal codes can be found in his website

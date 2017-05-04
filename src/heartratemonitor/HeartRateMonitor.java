@@ -75,6 +75,7 @@ public class HeartRateMonitor extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        //new CreateTables();//create DB and create tables for test use
     }
     
     /**
@@ -91,6 +92,14 @@ public class HeartRateMonitor extends Application {
      */
     public static User getUser() {
         return user;
+    }
+    
+    /**
+     * Method setUser()
+     * @param u
+     */
+    public static void setUser(User u) {
+        user = u;
     }
     
     /**

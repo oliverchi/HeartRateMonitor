@@ -17,8 +17,8 @@ import java.sql.Statement;
  */
 public class ConnectLocalDatabase {
     private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-    private static final String PROTOCOL = "jdbc:derby:.\\data\\;user=hrm;password=JavaDB";
-    private static final String DBNAME = "HRM";
+    private static final String PROTOCOL = "jdbc:derby:";
+    private static final String DBNAME = "HRM_data";
     public Connection conn;
     
     public ConnectLocalDatabase(){
@@ -104,34 +104,3 @@ public class ConnectLocalDatabase {
     }
     
 }
-
-
-/*
-
-        ConnectLocalDatabase cn = new ConnectLocalDatabase();
-        
-        //create database
-        if (cn.createDB()){
-            System.out.println("create successful");
-        } else {
-            System.out.println("create unsuccessful");
-        }
-            
-        //create table
-        if (cn.connectDB()){
-            System.out.println("successful");
-            if (cn.executeSQL("CREATE TABLE names(author varchar(50), author_id int, url varchar(80))")){
-                System.out.println("table operation success");
-            }else{
-                System.out.println("table error");                
-            }
-            cn.executeSQL("INSERT INTO names VALUES ('Adams, Douglas', 1, 'http://www.douglasadams.1com')");
-            cn.executeSQL("INSERT INTO names VALUES ('Adams1, 1Douglas', 2, 'http://www.douglasadams2.com')");
-            cn.executeSQL("INSERT INTO names VALUES ('Adams2, 2Douglas', 3, 'http://www.douglasadams3.com')");
-            cn.executeSQL("INSERT INTO names VALUES ('Adams3, 3Douglas', 4, 'http://www.douglasadams4.com')");
-            cn.closeConnection();
-        } else {
-            System.out.println("unsuccessful");
-        }
-
-*/

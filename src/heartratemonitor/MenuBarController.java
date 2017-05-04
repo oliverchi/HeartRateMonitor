@@ -8,9 +8,11 @@ package heartratemonitor;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -47,7 +49,8 @@ public class MenuBarController implements Initializable {
     private MenuItem qa; // Value injected by FXMLLoader
 
     @FXML // fx:id="about"
-    private MenuItem about; // Value injected by FXMLLoader
+    private MenuItem about; // Value injected by FXMLLoader  
+    
     
     /**
     * Event handler for MenuItem Register
@@ -62,6 +65,7 @@ public class MenuBarController implements Initializable {
     */
     @FXML
     void switchToLoginPane(ActionEvent event) {  
+        HeartRateMonitor.setUser(new User());
         new SwitchPanes("Login");
     }
 
@@ -170,6 +174,30 @@ public class MenuBarController implements Initializable {
     }
     
     /**
+    * Event handler for Mouse clicked
+    * decide if disable menu items
+    */
+    @FXML
+    void checkIfDisableMenu(Event event) {  
+        if (HeartRateMonitor.getUser().getUserName().equals("")){
+            disableMenu(); 
+        } else {            
+            enableMenu();
+        }
+    }
+    
+    @FXML
+    void checkIfDisableMenu2(MouseEvent event) {  
+        if (HeartRateMonitor.getUser().getUserName().equals("")){
+            disableMenu();     
+            System.out.println("disable menu");
+        } else {            
+            enableMenu();
+            System.out.println("enable menu");
+        }
+    }
+    
+    /**
      * Initialises the controller class.
      * @param url
      * @param rb
@@ -179,8 +207,8 @@ public class MenuBarController implements Initializable {
         //Check if user has logged in
         //Disable/enable menu depending on logged in or not
         if (HeartRateMonitor.getUser().getUserName().equals("")){
-            //disableMenu();//option for test
-        } else {
+            disableMenu();//hide during building program            
+        } else {            
             enableMenu();
         }
     }    

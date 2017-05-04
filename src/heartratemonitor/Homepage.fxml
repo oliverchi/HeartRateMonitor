@@ -38,5 +38,6 @@
          <ChoiceBox fx:id="funcBox" prefWidth="150.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP"> 
              
          </ChoiceBox>
+      <Label fx:id="welcomeText" text="Welcome, " GridPane.columnSpan="3" GridPane.valignment="TOP" />
    </children>
 </GridPane>

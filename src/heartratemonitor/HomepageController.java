@@ -27,6 +27,10 @@ public class HomepageController implements Initializable {
     @FXML // fx:id="funcBox"
     private ChoiceBox funcBox; // Value injected by FXMLLoader
     
+    @FXML // fx:id="welcomeText"
+    private Label welcomeText; // Value injected by FXMLLoader
+
+    
     /**
      * Initialises the controller class.
      * @param url
@@ -40,6 +44,14 @@ public class HomepageController implements Initializable {
         
         //Set message for choice box
         funcMsg.setText("Functions:");
+        
+        //Set welcome message
+        String name = HeartRateMonitor.getUser().getUserName();
+        if (HeartRateMonitor.getUser().getUserName().equals("")){
+            welcomeText.setText("Welcome, New User");
+        } else {
+            welcomeText.setText("Welcome, " + name);
+        }
 
         //ChoiceBox listener
         funcBox.getSelectionModel().selectFirst();
