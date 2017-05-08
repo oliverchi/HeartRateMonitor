@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -68,11 +67,11 @@ public class LoginController implements Initializable {
             
             //check if username and password is in database
             if(loginValidator(username.getText(),password.getText())){
-                login.username = username.getText();
-                login.password = password.getText();
+                login.setUserName(username.getText());
+                login.setPassword(password.getText()); 
                 HeartRateMonitor.setUser(login);
                 //System.out.println(HeartRateMonitor.getUser().getUserName());//use for test
-                new SwitchPanes("Homepage");        
+                new SwitchPanes("Homepage");                 
             } else {
                 invalidMsg.setText("incorrect username and password!");
             }

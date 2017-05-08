@@ -153,7 +153,7 @@ public class MenuBarController implements Initializable {
      */ 
     public void disableMenu(){
         logout.setDisable(true);
-        recomm.setDisable(true);
+        //recomm.setDisable(true);
         record.setDisable(true);
         review.setDisable(true);
         email.setDisable(true);

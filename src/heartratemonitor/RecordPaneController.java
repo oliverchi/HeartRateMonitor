@@ -36,7 +36,7 @@ public class RecordPaneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Initialise choice box
         funcBox.setItems(FXCollections.observableArrayList("Record",
-                "Recommend","Review",new Separator(), "Email to Doctor"));
+                "Recommend","Review","Email to Doctor"));
         
         //ChoiceBox listener
         funcBox.getSelectionModel().selectFirst();

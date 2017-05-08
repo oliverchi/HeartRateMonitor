@@ -4,9 +4,6 @@
  */
 package heartratemonitor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  *
@@ -15,22 +12,16 @@ import java.util.List;
 public class User {
     
     //Login information
-    String username;
-    String password;
-    
-    //User information
-    String[][] propertyOfUser;
-    
-    //Whole item number of user information
-    private final static int NUMOFPROPERTY = 10;
+    private String username;
+    private String password;    
+      
     
     /**
      * Constructor
      */
     public User(){
         username  = new String();
-        password  = new String();        
-        propertyOfUser = new String[2][NUMOFPROPERTY];
+        password  = new String();                
     }
     
     /**
@@ -38,7 +29,7 @@ public class User {
      * @return login name
      */
     public String getUserName(){
-        return username;
+        return this.username;
     }
     
     /**
@@ -46,7 +37,7 @@ public class User {
      * @return login key
      */
     public String getPassword(){
-        return password;
+        return this.password;
     }
     
     /**
@@ -55,7 +46,7 @@ public class User {
      * @param name
      */
     public void setUserName(String name){
-        username = name;
+        this.username = name;
     }
     
     /**
@@ -64,25 +55,9 @@ public class User {
      * @param key
      */
     public void setPassword(String key){
-        password = key;
-    }
+        this.password = key;
+    }   
     
-    /**
-     * Method getInformation()
-     * @return user information
-     */
-    public String[][] getInformation(){
-        return propertyOfUser;
-    }
-    
-    /**
-     * Method setInformation()
-     * Write user information
-     * @param details
-     */
-    public void setInformation(String[][] details){
-        propertyOfUser = details;
-    }
 }
 
 
