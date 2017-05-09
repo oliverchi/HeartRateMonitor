@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-May-2017, 16:43:35
+    Author     : Oliver
+*/
+
+.message {
+    -fx-text-fill: greenyellow;
+    -fx-font-family: "Agency FB";
+    -fx-font-weight: Bold;
+    -fx-font-size: 20;
+}
+
+.button {
+    -fx-background-color: #e7e7e7; /*#4CAF50;  Green */
+    -fx-border: 0.5px;
+    -fx-text-fill: #555555;
+    -fx-padding: 8px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 14px;
+}

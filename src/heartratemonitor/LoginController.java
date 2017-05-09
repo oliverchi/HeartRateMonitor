@@ -52,6 +52,7 @@ public class LoginController implements Initializable {
             }
         } catch(SQLException e){
               e.printStackTrace();
+              invalidMsg.setText("incorrect username and password!");
               return false;
         }       
     }

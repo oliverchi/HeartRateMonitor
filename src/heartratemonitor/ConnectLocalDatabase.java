@@ -50,7 +50,7 @@ public class ConnectLocalDatabase {
         }
         return TRUE;        
     } 
-    
+      
     
     /**
      * Method connectDB()

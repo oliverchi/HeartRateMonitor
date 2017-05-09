@@ -26,8 +26,11 @@ public class HeartRateMonitor extends Application {
     //Set BorderPane as layout 
     private final static BorderPane ROOTPANE = new BorderPane();
     
-    //Object User class
+    //Object User
     private static User user = new User();
+    
+    //Object Patient
+    private static Patient patient = new Patient();
     
     //Create main scene
     private static Scene scene;
@@ -73,9 +76,9 @@ public class HeartRateMonitor extends Application {
      * main()
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) {        
         //new CreateTables();//create DB and create tables for test use
+        launch(args);
     }
     
     /**
@@ -100,6 +103,22 @@ public class HeartRateMonitor extends Application {
      */
     public static void setUser(User u) {
         user = u;
+    }
+    
+    /**
+     * Method getPatient()
+     * @return patient object
+     */
+    public static Patient getPatient() {
+        return patient;
+    }
+    
+    /**
+     * Method setPatient()
+     * @param p
+     */
+    public static void setPatient(Patient p) {
+        patient = p;
     }
     
     /**

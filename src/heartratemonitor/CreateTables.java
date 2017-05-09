@@ -15,14 +15,27 @@ public class CreateTables {
     public CreateTables(){
         ConnectLocalDatabase cn = new ConnectLocalDatabase();
         
+        //delete tables
+        /*if (cn.connectDB()) {           
+            cn.executeSQL("Drop TABLE results");
+            cn.executeSQL("Drop TABLE login");
+            cn.executeSQL("Drop TABLE patient");
+            System.out.println("Delete tables successful");
+            cn.closeConnection();
+        } else {
+            System.out.println("Delete table unsuccessful");
+            cn.closeConnection();
+        }*/
+        
         //create database
-        /*if (cn.createDB()){
+        if (cn.createDB()){
             System.out.println("create DB successful");
         } else {
             System.out.println("create DB unsuccessful");
-        }*/
+        }
         
-        //create table
+        
+        //create table for login
         if (cn.connectDB()) {
             System.out.println("connnect successful");
             if (cn.executeSQL ( "CREATE TABLE login ("
@@ -42,6 +55,7 @@ public class CreateTables {
             System.out.println("connect unsuccessful");
         }
         
+        //create table for patient information
         if (cn.connectDB()) {
             System.out.println("connnect successful2");
             if (cn.executeSQL( "CREATE TABLE patient ( username "
@@ -68,5 +82,28 @@ public class CreateTables {
         } else {
             System.out.println("connect unsuccessful2");
         }
+        
+        //create table for test results
+        if (cn.connectDB()) {
+            System.out.println("connnect successful");
+            if (cn.executeSQL ( "CREATE TABLE results ("
+                    + " username VARCHAR(40) NOT NULL , "
+                    + "testdate DATE NOT NULL, "
+                    + "testresult INTEGER NOT NULL, "
+                    + "PRIMARY KEY (username, testdate))" ) ) {
+                System.out.println("table operation success");
+            } else {
+                System.out.println("table error");                
+            }
+            //cn.executeSQL("");
+            //cn.executeSQL("");
+            cn.executeSQL("INSERT INTO results (username, testdate, testresult) VALUES "
+                    + "('administrator', '2016-11-01', 75)");
+            cn.closeConnection();
+        } else {
+            System.out.println("connect unsuccessful");
+        }
+        
+        
     }
 }

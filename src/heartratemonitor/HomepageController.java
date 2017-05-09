@@ -5,7 +5,10 @@
  */
 package heartratemonitor;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,8 +37,7 @@ import javafx.scene.layout.VBox;
 public class HomepageController implements Initializable {
 
     @FXML
-    private Label welcomeText; // Value injected by FXMLLoader
-    
+    private Label welcomeText; // Value injected by FXMLLoader    
     
     @FXML
     private Label text1;   
@@ -68,19 +70,17 @@ public class HomepageController implements Initializable {
         String t2 = "choose one function to run";
         text2.setText(t2);
         
-        //init patient object
-        Patient patient = new Patient(HeartRateMonitor.getUser().getUserName());
-        
+        //sign object patient with all values from database 
         try {
             //access database retrieve all information of this patient
-            patient = retrieve(patient);
+            HeartRateMonitor.setPatient(retrieve());
         } catch (SQLException ex) {
             Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
         }
             
         //Set welcome message
-        welcomeText.setText("Welcome, " + patient.getFirstName() + " " + 
-                patient.getLastName());
+        welcomeText.setText("Welcome, " + HeartRateMonitor.getPatient().getFirstName() + " " + 
+                HeartRateMonitor.getPatient().getLastName());
         
         //Setup functions' name
         //the sequence of functions have to match the squence of index in method doFunction()!!!
@@ -105,14 +105,17 @@ public class HomepageController implements Initializable {
     }   
     
     //retrieve information for patient object
-    private Patient retrieve(Patient patient) throws SQLException{
+    private Patient retrieve() throws SQLException{
+        Patient patient = new Patient();
         ConnectLocalDatabase DB = new ConnectLocalDatabase(); 
         DB.connectDB();
+        String name = HeartRateMonitor.getUser().getUserName();
         PreparedStatement pst = DB.conn.prepareStatement("Select * from patient "
                 + "where username=?");
-        pst.setString(1, "administrator"/*patient.getUserName()*/); 
+        pst.setString(1, name); 
         try (ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
+                patient.setUserName(name);
                 patient.setFirstName(rs.getString("FIRSTNAME"));
                 patient.setLastName(rs.getString("LASTNAME"));   
                 patient.setDate(rs.getDate("DOB"));
@@ -156,9 +159,9 @@ public class HomepageController implements Initializable {
     }
     
     //do function recording test result
-    private void recordTestResult(){
+    private void recordTestResult() {
         //Controllers for Function recording test results
-        Label t0 = new Label("\n\nRecord Results from Recent Heart Rate Test\n");
+        Label t0 = new Label("\nRecord Results from Recent Heart Rate Test\n");
                 t0.setStyle("-fx-font:22 \"Agency FB\";");
                 
         Label t001 = new Label("\nTest Date:");        
@@ -180,9 +183,12 @@ public class HomepageController implements Initializable {
         
         Button recordSubmit = new Button("Submit Result");
         
+        Label t004 = new Label("\n");
+        
+        //add up all children and set style for function display
         functionBox.getChildren().clear();
         functionBox.getChildren().addAll(t0, t001, dateForTest, t002,
-                        testResult, t003, recordSubmit);        
+                        testResult, t003, recordSubmit, t004);        
         functionBox.setSpacing(5.0);                
         functionBox.setAlignment(Pos.TOP_LEFT);
                 
@@ -210,12 +216,30 @@ public class HomepageController implements Initializable {
         recordSubmit.setOnAction((ActionEvent e) -> {
             if ( dateForTest.getValue().isBefore((LocalDate.of(2016,1,1)))
                     || testResult.getText().isEmpty() 
-                    || !t003.getText().equals("\n")){
+                    || !t003.getText().equals("\n") ){
                 //action to give warning error
                 t003.setText("warning: please recheck your input");            
             } else {
-                    //submit new input to database
-                    System.exit(0);//for test
+                //check if it is a dupliated record
+                if ( inputIsDuplicate(dateForTest.getValue()) ) {
+                    //give warning due to duplicated record
+                    t004.setText("Warning: result in the same date occurs\n"
+                            + " Please don't dupulicate record test rest");
+                    t004.setStyle("-fx-font:16 \"Agency FB\";");
+                    t004.setStyle("-fx-background-color: red;");
+                    t004.setStyle("-fx-text-fill: white;");
+                } else {
+                    t004.setText("\n");//delete warning message
+                    //submit new input to databases
+                    try {                          
+                        new ChangeTables(HeartRateMonitor.getUser().getUserName(),
+                            Date.valueOf( dateForTest.getValue() ), 
+                            Integer.parseInt( testResult.getText() )
+                        );
+                    } catch (SQLException ex) {                    
+                        Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
         });    
     }
@@ -223,19 +247,73 @@ public class HomepageController implements Initializable {
     //do function giving recommendation if need testing
     private void recommendIfTest(){
         //Controllers for recommending if need test today
-        Label t1 = new Label("Recommend IF Need Heart Rate Test For Today");
+        Label t0 = new Label("Recommend IF Need Heart Rate Test For Today\n");
+                t0.setStyle("-fx-font:22 \"Agency FB\";");
+                
+        Label t001 = new Label("\n");        
+                t001.setStyle("-fx-font:18 \"Agency FB\";");           
+              
+        Label t002 = new Label("\n");
+                t002.setStyle("-fx-font:16 \"Agency FB\";");
         
+        //add up all children and set style for function display
         functionBox.getChildren().clear();
-                functionBox.getChildren().addAll(t1);
+        functionBox.getChildren().addAll(t0, t001, t002);        
+        functionBox.setSpacing(5.0);                
+        functionBox.setAlignment(Pos.TOP_LEFT);
+        
+        if (new AnalyseResults().calculateSevenResults()) {//check if last seven results are healthy
+            t001.setText("\nYou don't need to take a test today \n because "
+                    + "your previous test results are good.");
+        } else {
+            t001.setText("\nYou should take a test today \n due to "
+                    + "the analysis of your previous test results.");
+        }
     }
     
     //do function reviewing preview test results
-    private void reviewTestResults(){
+    private void reviewTestResults() {
         //Controllers for Function reviewing the preview test results
-        Label t2 = new Label("Review Previous Heart Rate Test Results");
+        Label t0 = new Label("\nReview Previous Heart Rate Test Results");
+              t0.setStyle("-fx-font:22 \"Agency FB\";");
+        
+        Label t001 = new Label("\nReview the results of heart rate test since");        
+                t001.setStyle("-fx-font:16 \"Agency FB\";");
+                
+        DatePicker dateForTest = new DatePicker();
+                dateForTest.setPrefWidth(100.00);
+                dateForTest.setMaxWidth(120.0);
+                dateForTest.setPromptText("2017-01-01");
+                
+        Label t003 = new Label("\n");
+        
+        Button recordSubmit = new Button("Submit Result");
         
         functionBox.getChildren().clear();
-                functionBox.getChildren().addAll(t2);
+        functionBox.getChildren().addAll(t0, t001, dateForTest, t003, recordSubmit);
+        functionBox.setSpacing(5.0);                
+        functionBox.setAlignment(Pos.TOP_LEFT);
+        
+        //check valid for test date
+        dateForTest.setOnAction((ActionEvent e) -> {
+            if ( dateForTest.getValue().isBefore((LocalDate.of(2016,1,1)))){
+                //action to give warning error
+                t003.setText("warning: test date is not before 1/1/2016");
+            } else {
+                t003.setText("\n");
+            }
+        });
+        
+        //submit button action
+        recordSubmit.setOnAction((ActionEvent e) -> {
+            if ( !t003.getText().equals("\n")){
+                //action to give warning error
+                t003.setText("warning: please choose a proper test date again");            
+            } else {
+                    //submit new input to database
+                    System.exit(0);//for test
+            }
+        });    
     }
     
     //do function emailing to doctor
@@ -245,5 +323,20 @@ public class HomepageController implements Initializable {
         
         functionBox.getChildren().clear();
                 functionBox.getChildren().addAll(t3);
+    }
+    
+    private Boolean inputIsDuplicate(LocalDate date){
+        try {
+            if (new SelectFromTable().isExist(
+                    HeartRateMonitor.getUser().getUserName(),
+                    Date.valueOf(date).toString() )){
+                return TRUE;
+            } else {
+                return FALSE;           
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FALSE;
     }
 }

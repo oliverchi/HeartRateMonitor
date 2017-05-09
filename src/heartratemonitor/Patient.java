@@ -44,6 +44,10 @@ public class Patient {
             return lastName;
 	}
         
+        public void setUserName(String name) {
+            this.username = name;
+	}
+        
         public void setFirstName(String name) {
             this.firstName = name;
 	}
